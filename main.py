@@ -1,9 +1,14 @@
-name = 'Bodgan'
-pattern = 'b'
+it doesn't contain spaces,
+it contains the @ symbol,
+after @, there's a dot, but in a correct address a dot shouldn't stand immediately after @,
+(@. should not be in the string).
+Note that dots may also occur before @!
 
-range(len(name) - len(pattern))
+The function should return True if all of the conditions are true, and False otherwise.
 
-0111011, 011 >> True
-0110110, 111 >> False
-00100111, 111 >> False / True
-1001011, 011 >> False / True
+def check_email(string):
+    return "@" in string and " " not in string and "@." not in string and string.find(".", string.index("@")) > 0
+  
+def check_email(string):
+    checks = all(e in string if i < 2 else e not in string for i, e in enumerate(['@', '.', '@.', ' ']))
+    return checks and string.rfind('.') > string.find('@')
